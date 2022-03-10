@@ -1,0 +1,144 @@
+<div class="container">
+  <h2>List Tour</h2>
+  <p>Welcome to Du Nịt Sung Sướng</p>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCreate">
+    Create Tour
+  </button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let t of showTours">
+      <td>{{t.id}}</td>
+      <td><a href="#" data-toggle="modal" data-target="#myModalDetails" (click)="showDetails(t)">{{t.name}}</a></td>
+      <td>{{t.price}}</td>
+      <td align="center">
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalEdit"
+                (click)="showEditTour(t.id)">Edit
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="deleteTour(t.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!-- The Modal Create -->
+<div class="modal" id="myModalCreate">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Input New Tour</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <table>
+          <tr>
+            <th>ID Tour:</th>
+            <td><input id="id" placeholder="ID Tour" [(ngModel)]="id"></td>
+          </tr>
+          <tr>
+            <th>Name Tour:</th>
+            <td><input id="name" placeholder="Name Tour" [(ngModel)]="name"></td>
+          </tr>
+          <tr>
+            <th>Price Tour:</th>
+            <td><input id="price" placeholder="Price Tour" [(ngModel)]="price"></td>
+          </tr>
+          <tr>
+            <th>Description Tour:</th>
+            <td><input id="description" placeholder="Description Tour" [(ngModel)]="description"></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="createTour(id)">Create</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- The Modal Edit -->
+<div class="modal" id="myModalEdit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Update Tour</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <table>
+          <tr>
+            <th>ID Tour:</th>
+            <td><input id="id1" placeholder="ID Tour" [(ngModel)]="id" readonly></td>
+          </tr>
+          <tr>
+            <th>Name Tour:</th>
+            <td><input id="name1" placeholder="Name Tour" [(ngModel)]="name"></td>
+          </tr>
+          <tr>
+            <th>Price Tour:</th>
+            <td><input id="price1" placeholder="Price Tour" [(ngModel)]="price"></td>
+          </tr>
+          <tr>
+            <th>Description Tour:</th>
+            <td><input id="description1" placeholder="Description Tour" [(ngModel)]="description"></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="updateTour(id)">Update</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- The Modal Details -->
+<div class="modal" id="myModalDetails">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Details Tour</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <label>ID Tuor: {{tour.id}} </label>
+        <br>
+        <label>Name Tuor: {{tour.name}}</label>
+        <br>
+        <label>Price Tour: {{tour.price}} </label>
+        <br>
+        <label>Description Tour: {{tour.description}} </label>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
